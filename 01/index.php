@@ -49,6 +49,7 @@
     $texto = "Socorram me subi no onibus em marrocos";
     $texto_invertido = strrev($texto);
     echo $texto_invertido;
+
 ?>
 
 <h2>Olá <?php echo $nome_completo?></h2>
