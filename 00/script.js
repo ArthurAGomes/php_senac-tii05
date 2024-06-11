@@ -7,8 +7,9 @@ class Conta {
     sacar(valor) {
         if(this.saldo >= valor && valor > 0) {
             this.saldo -= valor;
+            return true
         } else {
-            console.log("Saldo insuficiente");
+            return false;
         }
     }
 
@@ -19,6 +20,11 @@ class Conta {
     }
 
     // Transferir (conta)
+    transferir(valor, contaDestino) {
+        if(this.sacar(valor)) {
+            contaDestino.depositar(valor);
+        }
+    }
 
     toString() {
         return `Numero: ${this.numero} - Saldo: ${this.saldo}`;
@@ -63,3 +69,7 @@ console.log(contaC.toString());
 
 contaP.aplicarRendimento();
 //contaC.aplicarRendimento(); # erro por não existir função nessa classe
+
+contaP.transferir(200, contaC);
+console.log(contaC);
+console.log(contaP);
