@@ -32,11 +32,16 @@ echo "Seu imc é: " . $imc;
 
 // ----2---
 
-$tem_passaporte = true;
-$tem_visto = false;
-
-$pode_viajar = $tem_passaporte || $tem_visto;
-echo " <br> Pode viajar para o exterior: ". ($pode_viajar? "Sim" : "Não");
+$saldo= true;
+$compra =true;
+$valor_compra=20.0;
+if ($saldo == true) {
+    if ($compra == true && $valor_compra <= $saldo) {
+        echo " <br> A transação foi concluída com sucesso";
+    } else {
+        echo " <br> O saldo é insuficiente";
+    }
+}
 
 
 // ----------3---------------
