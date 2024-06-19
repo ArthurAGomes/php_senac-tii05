@@ -63,4 +63,28 @@ class Pessoa {
 $pessoa1 = new Pessoa();
 $pessoa1->setNome("fulano de tal");
 echo $pessoa1->getNome();
+echo "<br>";
+
+echo "Exemplo de constante mágica __DIR__ para obter o diretório atual: " . __DIR__ . "<br>";
+echo "Exemplo de constante mágica __FILE__ para obter o caminho completo do arquivo: " . __FILE__ . "<br>";
+echo "<br>";
+$numero = 70;
+if($numero < 20) {
+    echo "Número menor que 20";
+}
+echo "<br>";
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php if($numero < 20): ?>
+        <h2>Esse texto só deve aparecer se o número for menor que 20</h2>
+    <?php endif ?>
+</body>
+</html>
