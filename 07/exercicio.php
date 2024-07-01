@@ -1,4 +1,3 @@
-
 <?php
 /*
 Defina uma classe veiculo com as seguintes propriedades:
@@ -48,7 +47,7 @@ class Veiculo {
     }
 }
 
-$veiculoTeste = new Veiculo("Chevrolet", "Qualquer", 2000);
+$veiculoTeste = new Veiculo("Chevrolet", "Oniex", 2000);
 $veiculoTeste->exibirDados();
 $veiculoTeste->ligar();
 $veiculoTeste->ligar();
