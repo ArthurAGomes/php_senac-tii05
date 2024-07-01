@@ -54,4 +54,5 @@ $veiculoTeste->ligar();
 $veiculoTeste->desligar();
 $veiculoTeste->ligar();
 $veiculoTeste->ligar();
+
 ?>
