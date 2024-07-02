@@ -31,7 +31,7 @@ class Veiculo {
         if(!$this->ligado) {
             $this->ligado = true;
         } else {
-            echo "Veículo já se encontra ligado!  <br>";
+            // echo "Veículo já se encontra ligado!  <br>";
         }
     }
 
@@ -54,5 +54,13 @@ $veiculoTeste->ligar();
 $veiculoTeste->desligar();
 $veiculoTeste->ligar();
 $veiculoTeste->ligar();
+
+$veiculo1 = new Veiculo("FIAT", "Palio", 2007);
+$veiculo1->exibirDados();
+$veiculo1->ligar();
+$veiculo1->ligar();
+$veiculo1->desligar();
+$veiculo1->ligar();
+$veiculo1->ligar();
 
 ?>
