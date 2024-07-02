@@ -1,15 +1,29 @@
 <?php
-$host = 'localhost';
-$bd = 'contatos';
-$usuario = 'root';
-$senha = "";
 
-$conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+function getConexaoBD() {
+    $host = 'localhost';
+    $bd = 'contatos';
+    $usuario = 'root';
+    $senha = "";
 
-$stmt = $conexao->prepare("SELECT * FROM contatos_info");
-$stmt->execute();
-$contatos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    try {
+        $conexao = new PDO("mysql:host=$host;dbname=$bd", $usuario, $senha);
+        return $conexao;
+    } catch (PDOException $e) {
+        echo 'Conexão com o banco falhou!' . $e->getMessage();
+        exit;
+    }
+}
 
+function getContatos() {
+    $conn = getConexaoBD();
+    $stmt = $conn->prepare("SELECT * FROM contatos_info");
+    $stmt->execute();
+    $contatos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $contatos;
+}
+
+$contatos = getContatos();
 ?>
 
 <!DOCTYPE html>
