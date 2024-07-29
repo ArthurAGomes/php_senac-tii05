@@ -13,7 +13,7 @@ class Carro {
         $this->ano = $ano;
         $this->capacidadeTanque = 50;
         $this->totalCombustivel = 0;
-    }
+    }   
 
     public function ligar() {
         echo "O $this->modelo agora está ligado  <br>";
