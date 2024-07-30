@@ -9,7 +9,7 @@ try {
     $sql = "DELETE FROM itens_compra WHERE id = :id";
     
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => 2]);
+    $stmt->execute(['id' => 7]);
 
     echo "Item removido com sucesso!";
 } catch (PDOException $e) {

@@ -10,7 +10,7 @@ try {
             VALUES (:nome_produto, :quantidade)";
     
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['nome_produto' => 'Abacaxi', 'quantidade' => 15]);
+    $stmt->execute(['nome_produto' => 'Mamão', 'quantidade' => 6]);
 
     echo "Item inserido com sucesso!";
 } catch (PDOException $e) {
