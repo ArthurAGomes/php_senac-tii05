@@ -15,7 +15,7 @@ class Database {
         }
     }
 
-    public function getConexao() {
+    public getConexao() {
         return $this->conexao;
     }
 }
