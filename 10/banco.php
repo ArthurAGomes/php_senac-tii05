@@ -36,6 +36,14 @@ function addItem($nome_produto, $quantidade){
 
 //Função para atualizar um item (UPDATE)
 function updateItem($id, $comprado){
+    $pdo = connect();
+    
+    $sql= "UPDATE itens_compra SET comprado= :comprado WHERE id= :id";
+
+    $stmt= $pdo->prepare($sql);
+    $stmt->execute(['comprado' => true, 'id' =>$id]);
+
+    echo "item atualizado com sucesso";
 
 }
 
