@@ -1,27 +1,54 @@
 <?php
 
-class DatabaseRepository {
-    private $dsn = 'mysql:host=localhost;dbname=lista_compras';
-    private $username = 'root';
-    private $password = '';
+class DatabaseRepository
+{
+    private static $dsn = 'mysql:host=localhost;dbname=lista_compras';
+    private static $username = 'root';
+    private static $password = '';
 
-    public function connect() {
-
+    public static function connect()
+    {
+        try {
+            $pdo = new PDO(self::$dsn, self::$username, self::$password);
+            return $pdo;
+        } catch (PDOException $e) {
+            echo 'Erro de conexão: ' . $e->getMessage();
+        }
     }
 
-    public function getAllItems() {
-        return "Retornou todos os itens com sucesso";
+    public static function getAllItems()
+    {
+        $pdo = self::connect();
+        $sql = "SELECT * FROM itens_compra";
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function addItem() {
-        return "Adicionou o item com sucesso";
+     public static function addItem($nome_produto, $quantidade) {
+        $pdo = self::connect();
+        $sql = "INSERT INTO itens_compra (nome_produto, quantidade) 
+                VALUES (:nome_produto, :quantidade)";
+        
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute(['nome_produto' => $nome_produto
+                                , 'quantidade' => $quantidade]);
     }
 
-    public function updateItem() {
-        return "Atualizou o item com sucesso";
+     public static function updateItem($id, $comprado) {
+        $pdo = self::connect();
+    
+        $sql = "UPDATE itens_compra SET comprado=:x WHERE id=:y";
+    
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['x' => $comprado, 'y' => $id]);    
     }
 
-    public function deleteItem() {
-        return "Deletou o item com sucesso";
+    public static function deleteItem($id)
+    {
+        $pdo = self::connect();
+        $sql = "DELETE FROM itens_compra WHERE id = :id";
+
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute(['id' => $id]);
     }
 }
