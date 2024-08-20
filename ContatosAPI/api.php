@@ -12,12 +12,15 @@ switch ($acao) {
 
     case 'add':
         $data = json_decode(file_get_contents('php://input'), true);
-        DatabaseRepository::addItem($data['nome_produto'], $data['quantidade']);
+        DatabaseRepository::addItem($data['nome'], $data['telefone'], 
+        $data['email']);
         break;
 
     case 'update':
         $id = $_GET['id'];
         $data = json_decode(file_get_contents('php://input'), true);
+        DatabaseRepository::updateItem($id, $data['nome'], $data['telefone'], $data['email']);
+ 
         break;
 
     case 'apagar':
