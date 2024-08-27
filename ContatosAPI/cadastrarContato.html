@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Contato</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Contato</h1>
+        
+        <form id="contactForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <div id='message'></div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+
+            fetch('api.php?action=add', {
+                method: 'POST',
+                body: JSON.stringify({nome, telefone, email}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    document.getElementById('message').innerHTML = 'Contato cadastrado com sucesso';
+                    document.getElementById('contactForm').reset();
+                } else {
+                    document.getElementById('message').innerText = data.error ? data.error : 'Erro ao cadastrar o contato. Por favor, tente novamente.'
+                }
+            })
+            .catch(error => console.error('Erro ao cadastrar contato', error));
+        });
+    </script>
+</body>
+</html>

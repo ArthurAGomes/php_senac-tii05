@@ -14,7 +14,10 @@ switch($action) {
     case 'add':
         $data = json_decode(file_get_contents('php://input', true));
         $success = DatabaseRepository::insertContact($data->nome, $data->telefone, $data->email);
-        echo json_encode($success);
+        echo json_encode(['success' => $success]);
+        break;
+    case 'delete':
+        echo json_encode("Removeu X");
         break;
     default:
         echo json_encode(['error' => 'Acao invalida']);
