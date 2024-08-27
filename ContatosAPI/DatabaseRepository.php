@@ -38,5 +38,12 @@ class DatabaseRepository {
         $stmt = $pdo->prepare($sql);
         return $stmt->execute(['nome' => $nome, 'telefone' => $telefone, 'email' => $email]);
     }
+
+    public static function deleteContact($id){
+        $pdo=self::connect();
+        $sql= "DELETE FROM contatos_info WHERE id= :id";
+        $stmt = $pdo ->prepare($sql);
+        return $stmt->execute(['id'=> $id]);
+    }
 }
 
