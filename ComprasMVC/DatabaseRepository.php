@@ -49,20 +49,15 @@ class DatabaseRepository {
         ]);
     }
 
-    public static function updateItem($id, $nome_produto, $quantidade, $comprado) {
+    public static function toggleComprado($id) {
         $pdo = self::connect();
         $sql = "UPDATE itens_compra 
-                SET nome_produto = :nome_produto, quantidade = :quantidade, comprado = :comprado 
+                SET comprado = NOT comprado 
                 WHERE id = :id";
         $stmt = $pdo->prepare($sql);
-        return $stmt->execute([
-            'id' => $id,
-            'nome_produto' => $nome_produto,
-            'quantidade' => $quantidade,
-            'comprado' => $comprado
-        ]);
+        return $stmt->execute(['id' => $id]);
     }
-
+    
     public static function deleteItem($id) {
         $pdo = self::connect();
         $sql = "DELETE FROM itens_compra WHERE id = :id";

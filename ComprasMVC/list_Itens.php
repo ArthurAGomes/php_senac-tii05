@@ -1,6 +1,6 @@
 <?php
 require_once 'DatabaseRepository.php';
-$Itens = DatabaseRepository::getAllItens();
+$itens = DatabaseRepository::getAllItens();
 ?>
 
 <!DOCTYPE html>
@@ -28,14 +28,14 @@ $Itens = DatabaseRepository::getAllItens();
                     </tr>
                 </thead>
                 <tbody class="text-gray-700 text-sm font-light">
-                    <?php foreach ($Itens as $Itens): ?>
+                    <?php foreach ($itens as $item): ?>
                         <tr class="border-b border-gray-200 hover:bg-green-100 transition duration-200">
-                            <td class="py-3 px-6 text-left"><?= $Itens['nome_produto']; ?></td>
-                            <td class="py-3 px-6 text-left"><?= $Itens['quantidade']; ?></td>
-                            <td class="py-3 px-6 text-left"><?= $Itens['comprado']; ?></td>
+                            <td class="py-3 px-6 text-left"><?= $item['nome_produto']; ?></td>
+                            <td class="py-3 px-6 text-left"><?= $item['quantidade']; ?></td>
+                            <td class="py-3 px-6 text-left"><?= $item['comprado']; ?></td>
                             <td class="py-3 px-6 text-left">
-                                <a href="update.php?id=<?= $Itens['id']; ?>" class="text-green-700 hover:underline hover:text-green-700 transition duration-300 mr-2">Comprar</a>
-                                <a href="delete_itens.php?id=<?= $Itens['id']; ?>"
+                                <a href="update.php?id=<?= $item['id']; ?>" class="text-green-700 hover:underline hover:text-green-700 transition duration-300 mr-2">Comprar</a>
+                                <a href="delete_itens.php?id=<?= $item['id']; ?>"
                                     class="text-red-500 hover:underline hover:text-red-700 transition duration-300"
                                     onclick="confirmDelete(event)">Remover</a>
                             </td>

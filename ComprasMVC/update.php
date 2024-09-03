@@ -4,7 +4,7 @@ require_once 'DatabaseRepository.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
- 
+    // Busca o item pelo ID
     $item = DatabaseRepository::getItensById($id);
 
     if (!$item) {
@@ -12,10 +12,10 @@ if (isset($_GET['id'])) {
         exit;
     }
 
-    $updated = DatabaseRepository::updateItem($id, $item['nome_produto'], $item['quantidade'], 1);
+    $updated = DatabaseRepository::toggleComprado($id);
 
     if ($updated) {
-
+        
         header('Location: list_itens.php');
         exit;
     } else {
