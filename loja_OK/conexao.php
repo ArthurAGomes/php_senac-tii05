@@ -1,6 +1,6 @@
 <?php
 $servername ="localhost";
-$database="loja";
+$database="cade_obra";
 $username="root";
 $password="";
 // Criar a conexao

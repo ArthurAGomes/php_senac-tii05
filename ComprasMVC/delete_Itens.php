@@ -2,6 +2,6 @@
 require_once 'DatabaseRepository.php';
 
 $id = $_GET['id'];
-DatabaseRepository::deleteContact($id);
-header('Location: list_contacts.php');
+DatabaseRepository::deleteItem($id);
+header('Location: list_itens.php');
 exit;
