@@ -28,7 +28,7 @@ class DatabaseRepository {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Método para buscar itens pelo ID
+
     public static function getItensById($id) {
         $pdo = self::connect();
         $sql = "SELECT * FROM itens_compra WHERE id = :id";
@@ -37,7 +37,6 @@ class DatabaseRepository {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Método para inserir itens no banco de dados
     public static function insertItens($nome_produto, $quantidade, $comprado) {
         $pdo = self::connect();
         $sql = "INSERT INTO itens_compra (nome_produto, quantidade, comprado) 
@@ -50,7 +49,6 @@ class DatabaseRepository {
         ]);
     }
 
-    // Método para atualizar itens
     public static function updateItem($id, $nome_produto, $quantidade, $comprado) {
         $pdo = self::connect();
         $sql = "UPDATE itens_compra 
@@ -65,7 +63,6 @@ class DatabaseRepository {
         ]);
     }
 
-    // Método para deletar itens
     public static function deleteItem($id) {
         $pdo = self::connect();
         $sql = "DELETE FROM itens_compra WHERE id = :id";
