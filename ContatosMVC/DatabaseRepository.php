@@ -39,6 +39,21 @@ class DatabaseRepository {
         return $stmt->execute(['nome' => $nome, 'telefone' => $telefone, 'email' => $email]);
     }
 
+    public static function updateContact($id, $nome, $telefone, $email) {
+        $pdo = self::connect();
+        $sql = "UPDATE contatos_info 
+                SET nome = :nome, telefone = :telefone, email = :email 
+                WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([
+            'id' => $id, 
+            'nome' => $nome, 
+            'telefone' => $telefone, 
+            'email' => $email
+        ]);
+    }
+    
+
     public static function deleteContact($id)
     {
         $pdo = self::connect();
