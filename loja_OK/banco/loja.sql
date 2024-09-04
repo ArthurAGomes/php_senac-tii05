@@ -1,4 +1,11 @@
-
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 26/03/2024 às 02:37
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -188,9 +195,6 @@ CREATE TABLE `usuarios` (
 --
 -- Despejando dados para a tabela `usuarios`
 --
-
-INSERT INTO `usuarios` (`id_usuario`, `nome_usuario`, `email`, `password`) VALUES
-(1, 'Celso', 'celso@senac.com.br', '123456');
 
 --
 -- Índices para tabelas despejadas
